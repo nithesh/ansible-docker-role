@@ -1,0 +1,15 @@
+- name: add docker repository
+  sudo: yes
+  apt_repository: repo='deb https://get.docker.com/ubuntu docker main' state=present
+
+- name: add docker repository key
+  sudo: yes
+  apt_key: keyserver=hkp://p80.pool.sks-keyservers.net:80 id=36A1D7869245C8950F966E92D8576A8BA88D21E9
+
+- name: install docker
+  sudo: yes
+  apt: name=lxc-docker state=present update_cache=yes
+
+- name: add current user to docker group
+  sudo: yes
+  user: name={{ ansible_user_id }} groups=docker append=yes
