@@ -8,7 +8,7 @@
 
 - name: install docker
   sudo: yes
-  apt: name=lxc-docker state=present update_cache=yes
+  apt: name=lxc-docker state=present update_cache=yes cache_valid_time=3600
 
 - name: add current user to docker group
   sudo: yes
