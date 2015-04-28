@@ -13,3 +13,11 @@
 - name: add current user to docker group
   sudo: yes
   user: name={{ ansible_user_id }} groups=docker append=yes
+
+- name: install pip
+  sudo: yes
+  apt: name=python-pip state=present update_cache=yes cache_valid_time=3600
+
+- name: install docker-py
+  sudo: yes
+  pip: name=docker-py
